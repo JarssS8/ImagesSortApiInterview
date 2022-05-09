@@ -15,3 +15,7 @@ After create all the models, It's needed to create migrations package to create 
 I decide order the ImageInfo directly on the model first by weight and then by date, I did this because
 if we want to implement this algorithm for sort the images we will use it always, even if we want to filter by name we
 want to have it also sorted by weight and date.
+
+Next step is create the serializers that we are going to use with the models.
+I will create a new package called serializers, in this app it's not necessary, but the idea of this api is to be
+scalable, so I decided to create serializers package it is cleaner for me if we need to add more serializers for our API.
