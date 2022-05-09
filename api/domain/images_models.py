@@ -37,7 +37,7 @@ class ImageInfo(models.Model):
 
 
 # Don't have Model parameter because it will not be into the ORM
-class ImagesGridResponse():
+class ImagesGridResponse:
     def __init__(self, images):
         self.images = images
 
@@ -45,6 +45,3 @@ class ImagesGridResponse():
         if not self.images:
             return False
         return True
-
-
-

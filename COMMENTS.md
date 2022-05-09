@@ -36,5 +36,18 @@ The bad point about this is everytime you create a new file you need to import i
 Refactor hexagonal architecture 20 mins.
 
 Next step create and test all the rest endpoints.
+I didn't remove any of the example code.
+At this point I create the urls needed on the endpoints, also two APiView methods one for the Get method and one for the
+Post method. The only one proposal of these methods are being the entry point of hour application and return the final
+result. 
+
+All the logic is in the services that we are calling from these views.
+I create two different services, one for method, and in every of them I put when you initialize the service a dictionary 
+with the possible errors that you could get.
+If the application become bigger there are other ways more efficient to handle this errors making it more scalable,
+but for now I decided to keep it simple and the code as clean as possible. 
+
+It is not good for no one see 3 million lines of Response() with the same error.
+
 
 Time average: 80 mins.
