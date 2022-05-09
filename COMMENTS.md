@@ -16,6 +16,25 @@ I decide order the ImageInfo directly on the model first by weight and then by d
 if we want to implement this algorithm for sort the images we will use it always, even if we want to filter by name we
 want to have it also sorted by weight and date.
 
+I create a class method in TrackEventBody class that returns a list with all the elements of the enumeration.
+This is really usefully to check if the event type exists.
+
+Read, understand the project, create models and migrations 50 mins.
+
 Next step is create the serializers that we are going to use with the models.
 I will create a new package called serializers, in this app it's not necessary, but the idea of this api is to be
-scalable, so I decided to create serializers package it is cleaner for me if we need to add more serializers for our API.
+scalable, so I decided to create serializers package it is cleaner for me if we need to add more serializers for our
+API.
+
+Create serializers 10 mins.
+
+I decide follow hexagonal architecture, so I create a new package for the domain, this contains the models and the
+serializers. Unfortunately on django is not possible remove models file from the django app.
+I put all the login on this domain package and imported from then on.
+The bad point about this is everytime you create a new file you need to import it into models.py.
+
+Refactor hexagonal architecture 20 mins.
+
+Next step create and test all the rest endpoints.
+
+Time average: 80 mins.
