@@ -10,6 +10,9 @@ up: build migrate
 migrate:
 	docker-compose run api python manage.py migrate
 
+mami:
+	docker-compose run api python manage.py makemigrations
+
 deps:
 	docker-compose run api poetry install
 
