@@ -12,9 +12,9 @@ class ImagesViewTest(TestCase):
 
     def create_images(self):
         return [
-            ImageInfo.objects.create(name='image_1', url='http://image_1.com'),
-            ImageInfo.objects.create(name='image_2', url='http://image_2.com'),
-            ImageInfo.objects.create(name='image_3', url='http://image_3.com'),
+            ImageInfo.objects.create(name='image_1', url='https://image_1.com'),
+            ImageInfo.objects.create(name='image_2', url='https://image_2.com'),
+            ImageInfo.objects.create(name='image_3', url='https://image_3.com'),
         ]
 
     def test_no_images(self):

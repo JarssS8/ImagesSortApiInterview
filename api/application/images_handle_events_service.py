@@ -9,7 +9,7 @@ from ..models import TrackEventBody
 class ImagesHandleEventsService:
 
     def __init__(self, image_id, data, serializer_class):
-        self.EventTypesEnum = TrackEventBody.EventTypesEnum
+        self.event_types_enum = TrackEventBody.EventTypesEnum
         self.image_id = image_id
         self.data = data
         self.serializer_class = serializer_class
@@ -29,16 +29,16 @@ class ImagesHandleEventsService:
                 return self.serialize_data(image_info)
             else:
                 return self.codes['404']
-        except ObjectDoesNotExist as e:
+        except ObjectDoesNotExist:
             return self.codes['404']
-        except Exception as e:
+        except Exception:
             return self.codes['500']
 
     def serialize_data(self, image_info):
         serializer = self.serializer_class(data=self.data)
         if serializer.is_valid():
             event_type = serializer.data.get('event_type')
-            types_list = self.EventTypesEnum.list()
+            types_list = self.event_types_enum.list()
             if event_type in types_list:
                 return self.change_event_value(image_info, event_type)
             else:
@@ -48,9 +48,9 @@ class ImagesHandleEventsService:
 
     def change_event_value(self, image_info, event_type):
         events = image_info.events
-        if event_type == self.EventTypesEnum.VIEW.value:
+        if event_type == self.event_types_enum.VIEW.value:
             events.views += 1
-        elif event_type == self.EventTypesEnum.CLICK.value:
+        elif event_type == self.event_types_enum.CLICK.value:
             events.clicks += 1
         events.save()
         image_info.calculate_weight()

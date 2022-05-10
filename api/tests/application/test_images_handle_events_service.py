@@ -9,7 +9,7 @@ from api.domain.serializers.trackers import TrackEventBodySerializer
 class ImagesHandleEventsServiceTest(TestCase):
 
     def setUp(self):
-        self.image = ImageInfo.objects.create(name='image_3', url='http://image_3.com')
+        self.image = ImageInfo.objects.create(name='image_3', url='https://image_3.com')
         self.service = ImagesHandleEventsService
         self.serializer_class = TrackEventBodySerializer
 

@@ -27,5 +27,5 @@ class ImagesGridService:
                 return self.codes['200']
             else:
                 return self.codes['404']
-        except Exception as e:
+        except Exception:
             return self.codes['500']
