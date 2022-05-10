@@ -25,10 +25,9 @@ class ImagesHandleEventsService:
     def handle_image_events(self):
         try:
             image_info = ImageInfo.objects.get(id=self.image_id)
-            if image_info:
-                return self.serialize_data(image_info)
-            else:
+            if not image_info:
                 return self.codes['404']
+            return self.serialize_data(image_info)
         except ObjectDoesNotExist:
             return self.codes['404']
         except Exception:
@@ -36,15 +35,13 @@ class ImagesHandleEventsService:
 
     def serialize_data(self, image_info):
         serializer = self.serializer_class(data=self.data)
-        if serializer.is_valid():
-            event_type = serializer.data.get('event_type')
-            types_list = self.event_types_enum.list()
-            if event_type in types_list:
-                return self.change_event_value(image_info, event_type)
-            else:
-                return self.codes['400']
-        else:
+        if not serializer.is_valid():
             return self.codes['400']
+        event_type = serializer.data.get('event_type')
+        types_list = self.event_types_enum.list()
+        if event_type not in types_list:
+            return self.codes['400']
+        return self.change_event_value(image_info, event_type)
 
     def change_event_value(self, image_info, event_type):
         events = image_info.events

@@ -23,9 +23,9 @@ class ImagesGridService:
     # point of this technical challenge
     def get_grid_images(self):
         try:
-            if self.images_grid.has_images():
-                return self.codes['200']
-            else:
+            if not self.images_grid.has_images():
                 return self.codes['404']
+            return self.codes['200']
+
         except Exception:
             return self.codes['500']
