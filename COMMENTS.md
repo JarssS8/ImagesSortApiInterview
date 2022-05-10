@@ -49,5 +49,9 @@ but for now I decided to keep it simple and the code as clean as possible.
 
 It is not good for no one see 3 million lines of Response() with the same error.
 
+Create endpoints routes, services and views 60 mins.
 
-Time average: 80 mins.
+Testing the views and the services 30 mins.
+
+
+Time average: 170 mins.

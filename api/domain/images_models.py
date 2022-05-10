@@ -2,6 +2,9 @@ import uuid
 
 from django.db import models
 
+VIEWS_VALUE = 0.3
+CLICKS_VALUE = 0.7
+
 
 class Events(models.Model):
     views = models.PositiveIntegerField("Views", default=0)
@@ -27,7 +30,7 @@ class ImageInfo(models.Model):
     created_at = models.DateTimeField("Created At", null=False, blank=False, auto_now_add=True)
 
     def calculate_weight(self):
-        self.weight = self.events.clicks * 0.7 + self.events.views * 0.3
+        self.weight = self.events.clicks * CLICKS_VALUE + self.events.views * VIEWS_VALUE
         self.save()
 
     class Meta:

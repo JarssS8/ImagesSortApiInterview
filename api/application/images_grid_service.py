@@ -7,7 +7,7 @@ from ..models import ImageInfo
 from ..models import TrackEventBody
 
 
-class ImagesGetGridService:
+class ImagesGridService:
 
     def __init__(self, serializer_class):
         self.serializer_class = serializer_class

@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from ..application.images_grid_service import ImagesGetGridService
+from ..application.images_grid_service import ImagesGridService
 from ..application.images_handle_events_service import ImagesHandleEventsService
 from ..domain.serializers.images import ImagesGridResponseSerializer
 from ..domain.serializers.trackers import TrackEventBodySerializer
@@ -16,7 +16,7 @@ class GetAllImagesGridView(APIView):
     serializer_class = ImagesGridResponseSerializer
 
     def get(self, request):
-        images_get_grid_service = ImagesGetGridService(self.serializer_class)
+        images_get_grid_service = ImagesGridService(self.serializer_class)
         return images_get_grid_service.get_grid_images()
 
 
